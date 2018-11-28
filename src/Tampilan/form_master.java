@@ -40,10 +40,25 @@ public class form_master extends javax.swing.JFrame {
         jLabel1.setText("PILIH TRANSAKSI");
 
         menabung.setText("Menabung");
+        menabung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menabungActionPerformed(evt);
+            }
+        });
 
         penarikan.setText("Penarikan");
+        penarikan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                penarikanActionPerformed(evt);
+            }
+        });
 
         ceksaldo.setText("Cek Saldo");
+        ceksaldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ceksaldoActionPerformed(evt);
+            }
+        });
 
         exit.setText("EXIT");
         exit.addActionListener(new java.awt.event.ActionListener() {
@@ -96,6 +111,21 @@ public class form_master extends javax.swing.JFrame {
             System.exit(0);
         }     
     }//GEN-LAST:event_exitActionPerformed
+
+    private void menabungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menabungActionPerformed
+         new menabung().setVisible(true); // memindahkan dari signup form ke login form
+         this.setVisible(false);
+    }//GEN-LAST:event_menabungActionPerformed
+
+    private void penarikanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_penarikanActionPerformed
+       new penarikan().setVisible(true); // memindahkan dari form_master ke penarikan
+       this.setVisible(false);
+    }//GEN-LAST:event_penarikanActionPerformed
+
+    private void ceksaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ceksaldoActionPerformed
+       new cek_saldo().setVisible(true); // memindahkan dari menabung form ke form_master
+       this.setVisible(false);
+    }//GEN-LAST:event_ceksaldoActionPerformed
 
     /**
      * @param args the command line arguments

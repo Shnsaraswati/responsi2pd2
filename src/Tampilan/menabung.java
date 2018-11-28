@@ -5,6 +5,8 @@
  */
 package Tampilan;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Global Store
@@ -30,12 +32,14 @@ public class menabung extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtisi = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        txtkembali = new javax.swing.JButton();
+        txtsaldoanda = new javax.swing.JLabel();
+        saldo = new javax.swing.JLabel();
+        txtkeluar = new javax.swing.JButton();
+        txtsaldoanda2 = new javax.swing.JLabel();
+        saldo2 = new javax.swing.JLabel();
 
         jTextField3.setText("jTextField3");
 
@@ -45,21 +49,31 @@ public class menabung extends javax.swing.JFrame {
 
         jLabel2.setText("Masukkan jumlah uang yang anda ingin masukkan");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtisi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtisiActionPerformed(evt);
             }
         });
 
         jButton1.setText("YA");
 
-        jButton2.setText("KEMBALI KEMENU SEBELIMNYA");
+        txtkembali.setText("KEMBALI KEMENU SEBELIMNYA");
+        txtkembali.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtkembaliActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setText("Saldo Anda ");
+        txtsaldoanda.setText("Saldo Anda ");
 
-        jLabel4.setText("Saldo");
+        saldo.setText("Saldo");
 
-        jButton3.setText("KELUAR");
+        txtkeluar.setText("KELUAR");
+        txtkeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtkeluarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,12 +87,18 @@ public class menabung extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(txtkembali)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3))
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtkeluar))
+                    .addComponent(txtisi, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtsaldoanda)
+                            .addComponent(saldo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtsaldoanda2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(saldo2, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -89,25 +109,42 @@ public class menabung extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtisi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtsaldoanda)
+                    .addComponent(txtsaldoanda2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(saldo)
+                    .addComponent(saldo2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(89, 89, 89)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(30, Short.MAX_VALUE))
+                    .addComponent(txtkembali)
+                    .addComponent(txtkeluar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtisiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtisiActionPerformed
+
+    private void txtkembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtkembaliActionPerformed
+       new form_master().setVisible(true); // memindahkan dari menabung form ke form_master
+       this.setVisible(false);
+    }//GEN-LAST:event_txtkembaliActionPerformed
+
+    private void txtkeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtkeluarActionPerformed
+      int selectedOption = JOptionPane.showConfirmDialog(null,
+         "Apakah anda akan menutup system?", "Tutup Aplikasi", JOptionPane.YES_NO_OPTION);
+            if (selectedOption == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }     
+    }//GEN-LAST:event_txtkeluarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,13 +183,15 @@ public class menabung extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel saldo;
+    private javax.swing.JLabel saldo2;
+    private javax.swing.JTextField txtisi;
+    private javax.swing.JButton txtkeluar;
+    private javax.swing.JButton txtkembali;
+    private javax.swing.JLabel txtsaldoanda;
+    private javax.swing.JLabel txtsaldoanda2;
     // End of variables declaration//GEN-END:variables
 }

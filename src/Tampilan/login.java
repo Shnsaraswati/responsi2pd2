@@ -6,7 +6,9 @@
 package Tampilan;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import koneksi.koneksi;
@@ -39,7 +41,7 @@ public class login extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtpassword = new javax.swing.JTextField();
         login = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        signup = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,7 +72,12 @@ public class login extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("SIGNUP");
+        signup.setText("SIGNUP");
+        signup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signupActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,7 +102,7 @@ public class login extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(login)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                                .addComponent(jButton2))
+                                .addComponent(signup))
                             .addComponent(txtnrp)
                             .addComponent(txtpassword))))
                 .addContainerGap(136, Short.MAX_VALUE))
@@ -118,7 +125,7 @@ public class login extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(login)
-                    .addComponent(jButton2))
+                    .addComponent(signup))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
 
@@ -153,6 +160,10 @@ public class login extends javax.swing.JFrame {
             System.out.println("Error : " + e);
         }
     }//GEN-LAST:event_loginActionPerformed
+
+    private void signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupActionPerformed
+       new signup().setVisible(true);
+    }//GEN-LAST:event_signupActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,12 +201,12 @@ public class login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JButton login;
+    private javax.swing.JButton signup;
     private javax.swing.JTextField txtnrp;
     private javax.swing.JTextField txtpassword;
     // End of variables declaration//GEN-END:variables
