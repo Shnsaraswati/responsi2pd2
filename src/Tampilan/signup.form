@@ -56,8 +56,8 @@
                                   <Component id="txtttl" max="32767" attributes="0"/>
                                   <Component id="txtpassword" pref="172" max="32767" attributes="0"/>
                                   <Component id="txtalamat" max="32767" attributes="0"/>
-                                  <Component id="txtjk" max="32767" attributes="0"/>
                                   <Component id="txttelp" max="32767" attributes="0"/>
+                                  <Component id="comboJK" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -85,7 +85,7 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtjk" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="comboJK" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="12" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -191,14 +191,27 @@
         <Property name="text" type="java.lang.String" value="JK"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtjk">
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
         <Property name="text" type="java.lang.String" value="Telp"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txttelp">
+    </Component>
+    <Component class="javax.swing.JComboBox" name="comboJK">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
