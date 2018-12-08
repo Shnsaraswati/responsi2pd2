@@ -5,15 +5,33 @@
  */
 package Tampilan;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import koneksi.koneksi;
+
 
 /**
  *
  * @author Global Store
  */
 public class cek_saldo extends javax.swing.JFrame {
-
+     public Connection conn = new koneksi().connect();
+   
+ public void getSaldo() {
+        String query = "SELECT (SUM(uang_masuk) - SUM(uang_keluar)) as saldo FROM tabungan where nrp = '" + login.txtnrp.getText() + "'";
+        String saldo = "";
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet hasil = stmt.executeQuery(query);
+            if (hasil.next()) {
+                txtsaldo.setText(hasil.getString("saldo"));
+            }
+        } catch (Exception e) {
+        }
+    }
     /**
      * Creates new form cek_saldo
      */
@@ -24,12 +42,32 @@ public class cek_saldo extends javax.swing.JFrame {
         Object[] baris = {"NRP", "Uang Masuk", "Uang Keluar", "Tanggal"};
         tabmode = new DefaultTableModel(null, baris);
         tabelriwayat.setModel(tabmode);
+        String query = "SELECT * FROM `tabungan` WHERE nrp="+login.txtnrp.getText()+"";
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet hasil = stmt.executeQuery(query);
+            while (hasil.next()) {                
+                String nrp = hasil.getString("nrp");
+                String uang_masuk = hasil.getString("uang_masuk");
+                String uang_keluar = hasil.getString("uang_keluar");
+                String tanggal = hasil.getString("tanggal");
+                String data[] = {nrp, uang_masuk, uang_keluar, tanggal};
+                tabmode.addRow(data);
+            }
+        } catch (Exception e) {
+        }
+        
     }
     
     public cek_saldo() {
         initComponents();
+        getSaldo();
         datatable();
+        
+        
     }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -137,9 +175,10 @@ public class cek_saldo extends javax.swing.JFrame {
 
     private void txtkeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtkeluarActionPerformed
         int selectedOption = JOptionPane.showConfirmDialog(null,
-                "Apakah anda akan menutup system?", "Tutup Aplikasi", JOptionPane.YES_NO_OPTION);
+            "Apakah anda ingin keluar?", "Keluar Aplikasi", JOptionPane.YES_NO_OPTION);
         if (selectedOption == JOptionPane.YES_OPTION) {
-            System.exit(0);
+             new login().setVisible(true);
+             this.setVisible(false);
         }
     }//GEN-LAST:event_txtkeluarActionPerformed
 
