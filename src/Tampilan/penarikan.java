@@ -5,19 +5,54 @@
  */
 package Tampilan;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
-
+import java.util.ArrayList;
+import java.util.Date;
+import koneksi.koneksi;
 /**
  *
  * @author Global Store
  */
 public class penarikan extends javax.swing.JFrame {
-
+    public Connection conn = new koneksi().connect();
     /**
      * Creates new form penarikan
      */
+    ArrayList<String> data = new ArrayList<>();
+    ArrayList<String> uang = new ArrayList<>();
+    
+    public void uangDiambil()
+    {
+        uang.add(txtAmbil.getText());
+        int a = 0;
+        for (int i = 0; i < uang.size(); i++) {
+            a = a + Integer.parseInt(uang.get(i));
+        }
+        txtSaldoAmbil.setText(Integer.toString(a));
+    }
+    
+    public void getSaldo()
+    {
+        String query = "SELECT (SUM(uang_masuk) - SUM(uang_keluar)) as saldo FROM tabungan";
+        String saldo = "";
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet hasil = stmt.executeQuery(query);
+            if(hasil.next())
+            {
+                txtsaldoanda.setText(hasil.getString("saldo"));
+            }
+        } catch (Exception e) {
+        }
+    }
     public penarikan() {
         initComponents();
+        getSaldo();
     }
 
     /**
@@ -31,14 +66,14 @@ public class penarikan extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtAmbil = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        buttonYa = new javax.swing.JButton();
         txtkembali = new javax.swing.JButton();
         txtkeluar = new javax.swing.JButton();
         txtsaldoanda = new javax.swing.JLabel();
-        txtsaldo = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtSaldoAmbil = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,9 +83,12 @@ public class penarikan extends javax.swing.JFrame {
 
         jLabel3.setText("Saldo Anda");
 
-        jLabel4.setText("Saldo");
-
-        jButton1.setText("YA");
+        buttonYa.setText("YA");
+        buttonYa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonYaActionPerformed(evt);
+            }
+        });
 
         txtkembali.setText("KEMBALI KEMENU SEBELUMNYA");
         txtkembali.addActionListener(new java.awt.event.ActionListener() {
@@ -66,6 +104,10 @@ public class penarikan extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("Saldo yang diambil ");
+
+        txtSaldoAmbil.setText("0");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -77,23 +119,24 @@ public class penarikan extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAmbil, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
+                                .addComponent(jLabel3)
                                 .addGap(35, 35, 35)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtsaldoanda, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                                    .addComponent(txtsaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(txtsaldoanda, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(buttonYa)
                         .addGap(18, 18, 18)
                         .addComponent(txtkembali)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtkeluar)
-                        .addGap(73, 73, 73))))
+                        .addGap(73, 73, 73))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtSaldoAmbil, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,18 +146,18 @@ public class penarikan extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtAmbil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtsaldoanda, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(txtsaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jLabel4)
+                    .addComponent(txtSaldoAmbil))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonYa)
                     .addComponent(txtkembali)
                     .addComponent(txtkeluar))
                 .addGap(31, 31, 31))
@@ -135,6 +178,38 @@ public class penarikan extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_txtkeluarActionPerformed
+
+    private void buttonYaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonYaActionPerformed
+        // TODO add your handling code here:
+        String query = "INSERT INTO tabungan VALUES(?,?,?,?)";
+        
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyy HH:mm:ss");
+        Date date = new Date();
+        
+        try { 
+            data.clear();
+            String nrp = login.txtnrp.getText();
+            data.add(nrp);
+            data.add("0");
+            data.add(txtAmbil.getText());
+            data.add(date.toString());
+            
+            PreparedStatement stmt = conn.prepareStatement(query);
+            for (int i = 0; i < data.size(); i++) {
+                stmt.setString((i+1), data.get(i));
+            }
+            
+           
+            stmt.executeUpdate();
+            
+//            JOptionPane.showMessageDialog(null, "Berhasil Menabung");
+            getSaldo();
+            uangDiambil();
+            txtAmbil.setText("");
+        } catch (Exception e) {
+            System.out.println("Error : " + e);
+        }
+    }//GEN-LAST:event_buttonYaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,15 +247,15 @@ public class penarikan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton buttonYa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtAmbil;
+    private javax.swing.JLabel txtSaldoAmbil;
     private javax.swing.JButton txtkeluar;
     private javax.swing.JButton txtkembali;
-    private javax.swing.JLabel txtsaldo;
     private javax.swing.JLabel txtsaldoanda;
     // End of variables declaration//GEN-END:variables
 }

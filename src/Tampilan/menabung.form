@@ -36,7 +36,7 @@
                   <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnYa" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="txtkembali" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -44,15 +44,9 @@
                   </Group>
                   <Component id="txtisi" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtsaldoanda" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="saldo" alignment="0" min="-2" pref="49" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="txtsaldoanda" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtsaldoanda2" max="32767" attributes="0"/>
-                          <Component id="saldo2" pref="121" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="txtsaldoanda2" min="-2" pref="121" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="57" max="32767" attributes="0"/>
@@ -73,14 +67,9 @@
                   <Component id="txtsaldoanda" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtsaldoanda2" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="saldo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="saldo2" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnYa" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtkembali" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtkeluar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -105,10 +94,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtisiActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnYa">
       <Properties>
         <Property name="text" type="java.lang.String" value="YA"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnYaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="txtkembali">
       <Properties>
@@ -123,11 +115,6 @@
         <Property name="text" type="java.lang.String" value="Saldo Anda "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="saldo">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Saldo"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="txtkeluar">
       <Properties>
         <Property name="text" type="java.lang.String" value="KELUAR"/>
@@ -137,8 +124,6 @@
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="txtsaldoanda2">
-    </Component>
-    <Component class="javax.swing.JLabel" name="saldo2">
     </Component>
   </SubComponents>
 </Form>

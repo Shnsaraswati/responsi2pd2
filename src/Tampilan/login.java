@@ -23,6 +23,7 @@ public class login extends javax.swing.JFrame {
 
     public login() {
         initComponents();
+        
     }
 
     /**
@@ -39,9 +40,9 @@ public class login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtnrp = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtpassword = new javax.swing.JTextField();
         login = new javax.swing.JButton();
         signup = new javax.swing.JButton();
+        txtpswd = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,12 +59,6 @@ public class login extends javax.swing.JFrame {
         });
 
         jLabel4.setText("Password");
-
-        txtpassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtpasswordActionPerformed(evt);
-            }
-        });
 
         login.setText("LOGIN");
         login.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +99,7 @@ public class login extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                                 .addComponent(signup))
                             .addComponent(txtnrp)
-                            .addComponent(txtpassword))))
+                            .addComponent(txtpswd))))
                 .addContainerGap(136, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -121,7 +116,7 @@ public class login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtpswd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(login)
@@ -136,13 +131,9 @@ public class login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnrpActionPerformed
 
-    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtpasswordActionPerformed
-
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         String nrp = txtnrp.getText();
-        String password = txtpassword.getText();
+        String password = txtpswd.getText();
 
         String query = "select * from user where nrp = '" + nrp + "' && password = '" + password + "'";
         try {
@@ -150,7 +141,7 @@ public class login extends javax.swing.JFrame {
             ResultSet hasil = stmt.executeQuery(query);
 
             if (hasil.next() == true) {
-                JOptionPane.showMessageDialog(null, "DATA DITEMUKAN");
+                //JOptionPane.showMessageDialog(null, "DATA DITEMUKAN");
                 new form_master().setVisible(true);
                 this.setVisible(false);
             } else {
@@ -207,7 +198,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JButton login;
     private javax.swing.JButton signup;
-    private javax.swing.JTextField txtnrp;
-    private javax.swing.JTextField txtpassword;
+    public static javax.swing.JTextField txtnrp;
+    private javax.swing.JPasswordField txtpswd;
     // End of variables declaration//GEN-END:variables
 }

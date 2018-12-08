@@ -70,16 +70,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Menabung"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menabungActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="penarikan">
       <Properties>
         <Property name="text" type="java.lang.String" value="Penarikan"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="penarikanActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="ceksaldo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cek Saldo"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ceksaldoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="exit">
       <Properties>

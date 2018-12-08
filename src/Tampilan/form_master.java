@@ -109,7 +109,7 @@ public class form_master extends javax.swing.JFrame {
          "Apakah anda akan menutup system?", "Tutup Aplikasi", JOptionPane.YES_NO_OPTION);
             if (selectedOption == JOptionPane.YES_OPTION) {
             System.exit(0);
-        }     
+        }  
     }//GEN-LAST:event_exitActionPerformed
 
     private void menabungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menabungActionPerformed
