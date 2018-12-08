@@ -21,6 +21,8 @@ public class login extends javax.swing.JFrame {
 
     public Connection conn = new koneksi().connect();
 
+//    int batas = 3;
+    
     public login() {
         initComponents();
         
@@ -146,6 +148,11 @@ public class login extends javax.swing.JFrame {
                 this.setVisible(false);
             } else {
                 JOptionPane.showMessageDialog(null, "Data tidak ditemukan Silahkan Register Terlebih dahulu!");
+//                batas = batas - 1;
+//                if(batas<=0)
+//                {
+//                    JOptionPane.showMessageDialog(null, "ANDA DI BLOK!");
+//                }
             }
         } catch (Exception e) {
             System.out.println("Error : " + e);
