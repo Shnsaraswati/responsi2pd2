@@ -8,9 +8,6 @@ package Tampilan;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
-import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
 import koneksi.koneksi;
 
@@ -23,16 +20,9 @@ public class signup extends javax.swing.JFrame {
     /**
      * Creates new form form_master
      */
-    
-    ArrayList<String> data = new ArrayList<>();
-    
     public Connection conn = new koneksi().connect();
     public signup() {
         initComponents();
-        
-        comboJK.removeAllItems();
-        comboJK.addItem("Laki-laki");
-        comboJK.addItem("Perempuan");
     }
 
     /**
@@ -58,9 +48,9 @@ public class signup extends javax.swing.JFrame {
         done = new javax.swing.JButton();
         exit = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        txtjk = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txttelp = new javax.swing.JTextField();
-        comboJK = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -118,8 +108,6 @@ public class signup extends javax.swing.JFrame {
 
         jLabel8.setText("Telp");
 
-        comboJK.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -153,8 +141,8 @@ public class signup extends javax.swing.JFrame {
                                     .addComponent(txtttl)
                                     .addComponent(txtpassword, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
                                     .addComponent(txtalamat)
-                                    .addComponent(txttelp)
-                                    .addComponent(comboJK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(txtjk)
+                                    .addComponent(txttelp))))))
                 .addContainerGap(154, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -173,7 +161,7 @@ public class signup extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(comboJK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtjk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -219,30 +207,14 @@ public class signup extends javax.swing.JFrame {
     private void doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneActionPerformed
          String sql = "insert into user (nrp, nama, JK, telp, alamat, password, ttl) values (?,?,?,?,?,?,?)";
         try{
-            data.clear();
-            data.add(txtnrp.getText());
-            data.add(txtnama.getText());
-            data.add(comboJK.getSelectedItem().toString());
-            data.add(txttelp.getText());
-            data.add(txtalamat.getText());
-            data.add(txtpassword.getText());
-            data.add(txtttl.getText());
-            
-            
             PreparedStatement stat = conn.prepareStatement(sql);
-            
-            for(int i=0; i<data.size(); i++)
-            {
-                stat.setString((i+1), data.get(i));
-            }
-            
-//            stat.setString(1, txtnrp.getText());
-//            stat.setString(2, txtnama.getText());
-//            stat.setString(3, comboJK.getSelectedItem().toString());
-//            stat.setString(4, txttelp.getText());
-//            stat.setString(5, txtalamat.getText());
-//            stat.setString(6, txtpassword.getText());
-//            stat.setString(7, txtttl.getText());
+            stat.setString(1, txtnrp.getText());
+            stat.setString(2, txtnama.getText());
+            stat.setString(3, txtjk.getText());
+            stat.setString(4, txttelp.getText());
+            stat.setString(5, txtalamat.getText());
+            stat.setString(6, txtpassword.getText());
+            stat.setString(7, txtttl.getText());
            
             
             stat.executeUpdate();
@@ -257,9 +229,11 @@ public class signup extends javax.swing.JFrame {
     }//GEN-LAST:event_doneActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
-       new login().setVisible(true);
-       this.setVisible(false);    
-            
+        int selectedOption = JOptionPane.showConfirmDialog(null,
+         "Apakah anda akan menutup system?", "Tutup Aplikasi", JOptionPane.YES_NO_OPTION);
+            if (selectedOption == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }     
     }//GEN-LAST:event_exitActionPerformed
 
     /**
@@ -301,7 +275,6 @@ public class signup extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> comboJK;
     private javax.swing.JButton done;
     private javax.swing.JButton exit;
     private javax.swing.JLabel jLabel1;
@@ -313,6 +286,7 @@ public class signup extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField txtalamat;
+    private javax.swing.JTextField txtjk;
     private javax.swing.JTextField txtnama;
     private javax.swing.JTextField txtnrp;
     private javax.swing.JTextField txtpassword;
