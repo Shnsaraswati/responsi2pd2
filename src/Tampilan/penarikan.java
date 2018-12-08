@@ -5,17 +5,35 @@
  */
 package Tampilan;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
-
+import java.util.ArrayList;
+import koneksi.koneksi;
 /**
  *
  * @author Global Store
  */
 public class penarikan extends javax.swing.JFrame {
-
+    public Connection conn = new koneksi().connect();
     /**
      * Creates new form penarikan
      */
+     ArrayList<String> data = new ArrayList<>();
+     public void penarikan(){
+     String query = "SELECT (SUM (saldo)- SUM(uang_masuk)) as saldo FROM tabungan";
+     String saldo ="";
+     try {
+            Statement stmt = conn.createStatement();
+            ResultSet hasil = stmt.executeQuery(query);
+            if(hasil.next())
+            {
+                txtsaldoanda.setText(hasil.getString("saldo"));
+            }
+        } catch (Exception e) {
+        }
+     }
     public penarikan() {
         initComponents();
     }
@@ -33,12 +51,10 @@ public class penarikan extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        buttonYa = new javax.swing.JButton();
         txtkembali = new javax.swing.JButton();
         txtkeluar = new javax.swing.JButton();
         txtsaldoanda = new javax.swing.JLabel();
-        txtsaldo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,9 +64,12 @@ public class penarikan extends javax.swing.JFrame {
 
         jLabel3.setText("Saldo Anda");
 
-        jLabel4.setText("Saldo");
-
-        jButton1.setText("YA");
+        buttonYa.setText("YA");
+        buttonYa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonYaActionPerformed(evt);
+            }
+        });
 
         txtkembali.setText("KEMBALI KEMENU SEBELUMNYA");
         txtkembali.addActionListener(new java.awt.event.ActionListener() {
@@ -79,16 +98,12 @@ public class penarikan extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
+                                .addComponent(jLabel3)
                                 .addGap(35, 35, 35)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtsaldoanda, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                                    .addComponent(txtsaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(txtsaldoanda, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(buttonYa)
                         .addGap(18, 18, 18)
                         .addComponent(txtkembali)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -108,13 +123,9 @@ public class penarikan extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtsaldoanda, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(txtsaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(buttonYa)
                     .addComponent(txtkembali)
                     .addComponent(txtkeluar))
                 .addGap(31, 31, 31))
@@ -135,6 +146,10 @@ public class penarikan extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_txtkeluarActionPerformed
+
+    private void buttonYaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonYaActionPerformed
+       
+    }//GEN-LAST:event_buttonYaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,15 +187,13 @@ public class penarikan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton buttonYa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton txtkeluar;
     private javax.swing.JButton txtkembali;
-    private javax.swing.JLabel txtsaldo;
     private javax.swing.JLabel txtsaldoanda;
     // End of variables declaration//GEN-END:variables
 }
