@@ -63,8 +63,6 @@ public class cek_saldo extends javax.swing.JFrame {
         initComponents();
         getSaldo();
         datatable();
-        
-        
     }
     
     
