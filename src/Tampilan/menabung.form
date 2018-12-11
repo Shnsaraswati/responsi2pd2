@@ -124,6 +124,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="txtsaldoanda2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

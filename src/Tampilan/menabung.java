@@ -31,7 +31,7 @@ public class menabung extends javax.swing.JFrame {
     
     public void getSaldo()
     {
-        String query = "SELECT (SUM(uang_masuk) - SUM(uang_keluar)) as saldo FROM tabungan";
+        String query = "SELECT (SUM(uang_masuk) - SUM(uang_keluar)) as saldo FROM tabungan where nrp="+login.txtnrp.getText()+"";
         String saldo = "";
         try {
             Statement stmt = conn.createStatement();
@@ -105,6 +105,8 @@ public class menabung extends javax.swing.JFrame {
             }
         });
 
+        txtsaldoanda2.setText("0");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -161,11 +163,8 @@ public class menabung extends javax.swing.JFrame {
     }//GEN-LAST:event_txtkembaliActionPerformed
 
     private void txtkeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtkeluarActionPerformed
-          int selectedOption = JOptionPane.showConfirmDialog(null,
-                "Apakah anda akan menutup system?", "Tutup Aplikasi", JOptionPane.YES_NO_OPTION);
-        if (selectedOption == JOptionPane.YES_OPTION) {
-            System.exit(0);
-        }
+        new login().setVisible(true);
+       this.setVisible(false); 
     }//GEN-LAST:event_txtkeluarActionPerformed
 
     private void btnYaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYaActionPerformed
