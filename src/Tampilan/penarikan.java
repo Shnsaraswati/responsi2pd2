@@ -25,6 +25,7 @@ public class penarikan extends javax.swing.JFrame {
      */
     ArrayList<String> data = new ArrayList<>();
     ArrayList<String> uang = new ArrayList<>();
+    public int saldo;
     
     public void uangDiambil()
     {
@@ -38,13 +39,13 @@ public class penarikan extends javax.swing.JFrame {
     
     public void getSaldo()
     {
-        String query = "SELECT (SUM(uang_masuk) - SUM(uang_keluar)) as saldo FROM tabungan";
-        String saldo = "";
+        String query = "SELECT (SUM(uang_masuk) - SUM(uang_keluar)) as saldo FROM tabungan where nrp="+login.txtnrp.getText()+"";
         try {
             Statement stmt = conn.createStatement();
             ResultSet hasil = stmt.executeQuery(query);
             if(hasil.next())
             {
+                saldo = hasil.getInt("saldo");
                 txtsaldoanda.setText(hasil.getString("saldo"));
             }
         } catch (Exception e) {
@@ -104,7 +105,7 @@ public class penarikan extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Saldo yang diambil ");
+        jLabel4.setText("Debit");
 
         txtSaldoAmbil.setText("0");
 
@@ -123,20 +124,19 @@ public class penarikan extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(35, 35, 35)
-                                .addComponent(txtsaldoanda, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtsaldoanda, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                                    .addComponent(txtSaldoAmbil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(buttonYa)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buttonYa)
+                            .addComponent(jLabel4))
                         .addGap(18, 18, 18)
                         .addComponent(txtkembali)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtkeluar)
-                        .addGap(73, 73, 73))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtSaldoAmbil, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(73, 73, 73))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,11 +151,11 @@ public class penarikan extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtsaldoanda, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtSaldoAmbil))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                    .addComponent(txtSaldoAmbil, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonYa)
                     .addComponent(txtkembali)
@@ -172,42 +172,46 @@ public class penarikan extends javax.swing.JFrame {
     }//GEN-LAST:event_txtkembaliActionPerformed
 
     private void txtkeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtkeluarActionPerformed
-        int selectedOption = JOptionPane.showConfirmDialog(null,
-                "Apakah anda akan menutup system?", "Tutup Aplikasi", JOptionPane.YES_NO_OPTION);
-        if (selectedOption == JOptionPane.YES_OPTION) {
-            System.exit(0);
-        }
+       new login().setVisible(true);
+       this.setVisible(false); 
     }//GEN-LAST:event_txtkeluarActionPerformed
 
     private void buttonYaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonYaActionPerformed
         // TODO add your handling code here:
-        String query = "INSERT INTO tabungan VALUES(?,?,?,?)";
+        int ambil = Integer.parseInt(txtAmbil.getText());
+        if (ambil > saldo) {
+            JOptionPane.showMessageDialog(null, "MAAF , SALDO YANG ANDA AMBIL KEBANGETAN");
+        }
+        else
+        {
+            String query = "INSERT INTO tabungan VALUES(?,?,?,?)";
         
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyy HH:mm:ss");
-        Date date = new Date();
-        
-        try { 
-            data.clear();
-            String nrp = login.txtnrp.getText();
-            data.add(nrp);
-            data.add("0");
-            data.add(txtAmbil.getText());
-            data.add(date.toString());
-            
-            PreparedStatement stmt = conn.prepareStatement(query);
-            for (int i = 0; i < data.size(); i++) {
-                stmt.setString((i+1), data.get(i));
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyy HH:mm:ss");
+            Date date = new Date();
+
+            try { 
+                data.clear();
+                String nrp = login.txtnrp.getText();
+                data.add(nrp);
+                data.add("0");
+                data.add(txtAmbil.getText());
+                data.add(date.toString());
+
+                PreparedStatement stmt = conn.prepareStatement(query);
+                for (int i = 0; i < data.size(); i++) {
+                    stmt.setString((i+1), data.get(i));
+                }
+
+
+                stmt.executeUpdate();
+
+    //            JOptionPane.showMessageDialog(null, "Berhasil Menabung");
+                getSaldo();
+                uangDiambil();
+                txtAmbil.setText("");
+            } catch (Exception e) {
+                System.out.println("Error : " + e);
             }
-            
-           
-            stmt.executeUpdate();
-            
-//            JOptionPane.showMessageDialog(null, "Berhasil Menabung");
-            getSaldo();
-            uangDiambil();
-            txtAmbil.setText("");
-        } catch (Exception e) {
-            System.out.println("Error : " + e);
         }
     }//GEN-LAST:event_buttonYaActionPerformed
 
