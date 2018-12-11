@@ -105,11 +105,9 @@ public class form_master extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
-        int selectedOption = JOptionPane.showConfirmDialog(null,
-         "Apakah anda akan menutup system?", "Tutup Aplikasi", JOptionPane.YES_NO_OPTION);
-            if (selectedOption == JOptionPane.YES_OPTION) {
-            System.exit(0);
-        }  
+        new login().setVisible(true);
+       this.setVisible(false); 
+          
     }//GEN-LAST:event_exitActionPerformed
 
     private void menabungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menabungActionPerformed
