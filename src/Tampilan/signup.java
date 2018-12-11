@@ -33,6 +33,62 @@ public class signup extends javax.swing.JFrame {
         comboJK.removeAllItems();
         comboJK.addItem("Laki-laki");
         comboJK.addItem("Perempuan");
+        
+        cbtanggal.removeAllItems();
+        cbtanggal.addItem("1");
+        cbtanggal.addItem("2");
+        cbtanggal.addItem("3");
+        cbtanggal.addItem("4");
+        cbtanggal.addItem("5");
+        cbtanggal.addItem("6");
+        cbtanggal.addItem("7");
+        cbtanggal.addItem("8");
+        cbtanggal.addItem("9");
+        cbtanggal.addItem("10");
+        cbtanggal.addItem("11");
+        cbtanggal.addItem("12");
+        cbtanggal.addItem("13");
+        cbtanggal.addItem("14");
+        cbtanggal.addItem("15");
+        cbtanggal.addItem("16");
+        cbtanggal.addItem("17");
+        cbtanggal.addItem("18");
+        cbtanggal.addItem("19");
+        cbtanggal.addItem("20");
+        cbtanggal.addItem("21");
+        cbtanggal.addItem("22");
+        cbtanggal.addItem("23");
+        cbtanggal.addItem("24");
+        cbtanggal.addItem("25");
+        cbtanggal.addItem("26");
+        cbtanggal.addItem("27");
+        cbtanggal.addItem("28");
+        cbtanggal.addItem("29");
+        cbtanggal.addItem("30");
+        cbtanggal.addItem("31");
+        
+        
+        cbbulan.removeAllItems();
+        cbbulan.addItem("Januari");
+        cbbulan.addItem("Februari");
+        cbbulan.addItem("Maret");
+        cbbulan.addItem("April");
+        cbbulan.addItem("Mei");
+        cbbulan.addItem("Juni");
+        cbbulan.addItem("Juli");
+        cbbulan.addItem("Agustus");
+        cbbulan.addItem("September");
+        cbbulan.addItem("Oktober");
+        cbbulan.addItem("November");
+        cbbulan.addItem("Desember");
+        
+        cbtahun.removeAllItems();
+        cbtahun.addItem("1995");
+        cbtahun.addItem("1996");
+        cbtahun.addItem("1997");
+        cbtahun.addItem("1998");
+        cbtahun.addItem("1999");
+        cbtahun.addItem("2000");
     }
 
     /**
@@ -45,60 +101,35 @@ public class signup extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtnama = new javax.swing.JTextField();
-        txtnrp = new javax.swing.JTextField();
-        txtalamat = new javax.swing.JTextField();
-        txtpassword = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtttl = new javax.swing.JTextField();
         done = new javax.swing.JButton();
         exit = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        JK = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txttelp = new javax.swing.JTextField();
         comboJK = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtalamat = new javax.swing.JTextArea();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        cbtanggal = new javax.swing.JComboBox<>();
+        cbbulan = new javax.swing.JComboBox<>();
+        cbtahun = new javax.swing.JComboBox<>();
+        txtpassword = new javax.swing.JPasswordField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtnrp = new javax.swing.JTextField();
+        txtnama = new javax.swing.JTextField();
+        txtttl = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("SILAHKAN ISI BIODATA ANDA");
 
-        jLabel2.setText("Nama");
-
-        jLabel3.setText("NRP");
-
-        jLabel4.setText("TTL");
-
         jLabel5.setText("Alamat");
 
-        txtnama.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtnamaActionPerformed(evt);
-            }
-        });
-
-        txtalamat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtalamatActionPerformed(evt);
-            }
-        });
-
-        txtpassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtpasswordActionPerformed(evt);
-            }
-        });
-
         jLabel6.setText("Password");
-
-        txtttl.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtttlActionPerformed(evt);
-            }
-        });
 
         done.setText("DONE");
         done.addActionListener(new java.awt.event.ActionListener() {
@@ -114,11 +145,52 @@ public class signup extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText("JK");
+        JK.setText("JK");
 
         jLabel8.setText("Telp");
 
+        txttelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txttelpActionPerformed(evt);
+            }
+        });
+
         comboJK.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboJK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboJKActionPerformed(evt);
+            }
+        });
+
+        txtalamat.setColumns(20);
+        txtalamat.setRows(5);
+        jScrollPane1.setViewportView(txtalamat);
+
+        jLabel9.setText("Tempat Lahir");
+
+        jLabel4.setText("Tanggal Lahir");
+
+        cbtanggal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cbbulan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cbtahun.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        txtpassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtpasswordActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("NRP");
+
+        jLabel2.setText("Nama");
+
+        txtttl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtttlActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,35 +199,57 @@ public class signup extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(done)
-                        .addGap(18, 18, 18)
-                        .addComponent(exit))
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                            .addComponent(txtnrp, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtnama, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel5))
-                                    .addComponent(jLabel4))
-                                .addGap(18, 18, 18)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(31, 31, 31))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel10)
+                                        .addGap(44, 44, 44)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtttl)
-                                    .addComponent(txtpassword, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                                    .addComponent(txtalamat)
-                                    .addComponent(txttelp)
-                                    .addComponent(comboJK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(154, Short.MAX_VALUE))
+                                    .addComponent(txttelp, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                                    .addComponent(txtnrp)
+                                    .addComponent(txtnama)
+                                    .addComponent(comboJK, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane1)))
+                            .addComponent(JK))
+                        .addGap(75, 75, 75)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(done)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(exit)
+                                .addGap(17, 17, 17))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cbtanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cbbulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cbtahun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtpassword)
+                                            .addComponent(txtttl, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))))
+                                .addGap(0, 114, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,61 +257,54 @@ public class signup extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtnrp, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtnama, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(comboJK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txttelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtalamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtttl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(done)
-                    .addComponent(exit))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel2)
+                            .addComponent(txtttl, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtnrp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtnama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbtanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbbulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbtahun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JK)
+                            .addComponent(comboJK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(done)
+                            .addComponent(exit)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel8)
+                            .addComponent(txttelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 4, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtttlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtttlActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtttlActionPerformed
-
-    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtpasswordActionPerformed
-
-    private void txtalamatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtalamatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtalamatActionPerformed
-
-    private void txtnamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnamaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtnamaActionPerformed
-
     private void doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneActionPerformed
-         String sql = "insert into user (nrp, nama, JK, telp, alamat, password, ttl) values (?,?,?,?,?,?,?)";
+        String tgl = cbtanggal.getSelectedItem() + "/" + cbbulan.getSelectedItem() + "/" + cbtahun.getSelectedItem();
+        String sql = "insert into user (nrp, nama, JK, telp, alamat, password, ttl, tanggallahir) values (?,?,?,?,?,?,?,?)";
         try{
             data.clear();
             data.add(txtnrp.getText());
@@ -227,6 +314,7 @@ public class signup extends javax.swing.JFrame {
             data.add(txtalamat.getText());
             data.add(txtpassword.getText());
             data.add(txtttl.getText());
+            data.add(tgl);
             
             
             PreparedStatement stat = conn.prepareStatement(sql);
@@ -261,6 +349,22 @@ public class signup extends javax.swing.JFrame {
        this.setVisible(false);    
             
     }//GEN-LAST:event_exitActionPerformed
+
+    private void txttelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttelpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txttelpActionPerformed
+
+    private void comboJKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboJKActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboJKActionPerformed
+
+    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtpasswordActionPerformed
+
+    private void txtttlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtttlActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtttlActionPerformed
 
     /**
      * @param args the command line arguments
@@ -301,21 +405,26 @@ public class signup extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel JK;
+    private javax.swing.JComboBox<String> cbbulan;
+    private javax.swing.JComboBox<String> cbtahun;
+    private javax.swing.JComboBox<String> cbtanggal;
     private javax.swing.JComboBox<String> comboJK;
     private javax.swing.JButton done;
     private javax.swing.JButton exit;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField txtalamat;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea txtalamat;
     private javax.swing.JTextField txtnama;
     private javax.swing.JTextField txtnrp;
-    private javax.swing.JTextField txtpassword;
+    private javax.swing.JPasswordField txtpassword;
     private javax.swing.JTextField txttelp;
     private javax.swing.JTextField txtttl;
     // End of variables declaration//GEN-END:variables
