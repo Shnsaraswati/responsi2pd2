@@ -172,12 +172,9 @@ public class cek_saldo extends javax.swing.JFrame {
     }//GEN-LAST:event_txtkembaliActionPerformed
 
     private void txtkeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtkeluarActionPerformed
-        int selectedOption = JOptionPane.showConfirmDialog(null,
-            "Apakah anda ingin keluar?", "Keluar Aplikasi", JOptionPane.YES_NO_OPTION);
-        if (selectedOption == JOptionPane.YES_OPTION) {
-             new login().setVisible(true);
-             this.setVisible(false);
-        }
+       new login().setVisible(true);
+       this.setVisible(false); 
+        
     }//GEN-LAST:event_txtkeluarActionPerformed
 
     /**
