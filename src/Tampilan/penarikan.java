@@ -184,33 +184,40 @@ public class penarikan extends javax.swing.JFrame {
         }
         else
         {
-            String query = "INSERT INTO tabungan VALUES(?,?,?,?)";
+            if(ambil < 0)
+            {
+                JOptionPane.showMessageDialog(null, "SUDAH DIBILANG KALAU NGAMBIL JANGAN KEBANGETAN!");
+            }
+            else
+            {
+                String query = "INSERT INTO tabungan VALUES(?,?,?,?)";
         
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyy HH:mm:ss");
-            Date date = new Date();
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyy HH:mm:ss");
+                Date date = new Date();
 
-            try { 
-                data.clear();
-                String nrp = login.txtnrp.getText();
-                data.add(nrp);
-                data.add("0");
-                data.add(txtAmbil.getText());
-                data.add(date.toString());
+                try { 
+                    data.clear();
+                    String nrp = login.txtnrp.getText();
+                    data.add(nrp);
+                    data.add("0");
+                    data.add(txtAmbil.getText());
+                    data.add(date.toString());
 
-                PreparedStatement stmt = conn.prepareStatement(query);
-                for (int i = 0; i < data.size(); i++) {
-                    stmt.setString((i+1), data.get(i));
+                    PreparedStatement stmt = conn.prepareStatement(query);
+                    for (int i = 0; i < data.size(); i++) {
+                        stmt.setString((i+1), data.get(i));
+                    }
+
+
+                    stmt.executeUpdate();
+
+        //            JOptionPane.showMessageDialog(null, "Berhasil Menabung");
+                    getSaldo();
+                    uangDiambil();
+                    txtAmbil.setText("");
+                } catch (Exception e) {
+                    System.out.println("Error : " + e);
                 }
-
-
-                stmt.executeUpdate();
-
-    //            JOptionPane.showMessageDialog(null, "Berhasil Menabung");
-                getSaldo();
-                uangDiambil();
-                txtAmbil.setText("");
-            } catch (Exception e) {
-                System.out.println("Error : " + e);
             }
         }
     }//GEN-LAST:event_buttonYaActionPerformed
