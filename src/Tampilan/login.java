@@ -22,10 +22,9 @@ public class login extends javax.swing.JFrame {
     public Connection conn = new koneksi().connect();
 
 //    int batas = 3;
-    
     public login() {
         initComponents();
-        
+
     }
 
     /**
@@ -134,33 +133,39 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtnrpActionPerformed
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        String nrp = txtnrp.getText();
-        String password = txtpswd.getText();
+        if (txtnrp.getText().equals("") || txtpswd.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Silahkan masukkan NRP dan Password anda terlebih dahulu");
+        } else {
+            String nrp = txtnrp.getText();
+            String password = txtpswd.getText();
 
-        String query = "select * from user where nrp = '" + nrp + "' && password = '" + password + "'";
-        try {
-            Statement stmt = conn.createStatement();
-            ResultSet hasil = stmt.executeQuery(query);
+            String query = "select * from user where nrp = '" + nrp + "' && password = '" + password + "'";
+            try {
+                Statement stmt = conn.createStatement();
+                ResultSet hasil = stmt.executeQuery(query);
 
-            if (hasil.next() == true) {
-                //JOptionPane.showMessageDialog(null, "DATA DITEMUKAN");
-                new form_master().setVisible(true);
-                this.setVisible(false);
-            } else {
-                JOptionPane.showMessageDialog(null, "Data tidak ditemukan Silahkan Register Terlebih dahulu!");
+                if (hasil.next() == true) {
+                    //JOptionPane.showMessageDialog(null, "DATA DITEMUKAN");
+                    new form_master().setVisible(true);
+                    this.setVisible(false);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Data tidak ditemukan Silahkan Register Terlebih dahulu!");
 //                batas = batas - 1;
 //                if(batas<=0)
 //                {
 //                    JOptionPane.showMessageDialog(null, "ANDA DI BLOK!");
 //                }
+                }
+            } catch (Exception e) {
+                System.out.println("Error : " + e);
             }
-        } catch (Exception e) {
-            System.out.println("Error : " + e);
         }
+
+
     }//GEN-LAST:event_loginActionPerformed
 
     private void signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupActionPerformed
-       new signup().setVisible(true);
+        new signup().setVisible(true);
     }//GEN-LAST:event_signupActionPerformed
 
     /**
