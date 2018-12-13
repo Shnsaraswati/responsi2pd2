@@ -23,17 +23,17 @@ public class signup extends javax.swing.JFrame {
     /**
      * Creates new form form_master
      */
-    
     ArrayList<String> data = new ArrayList<>();
-    
+
     public Connection conn = new koneksi().connect();
+
     public signup() {
         initComponents();
-        
+
         comboJK.removeAllItems();
         comboJK.addItem("Laki-laki");
         comboJK.addItem("Perempuan");
-        
+
         cbtanggal.removeAllItems();
         cbtanggal.addItem("1");
         cbtanggal.addItem("2");
@@ -66,8 +66,7 @@ public class signup extends javax.swing.JFrame {
         cbtanggal.addItem("29");
         cbtanggal.addItem("30");
         cbtanggal.addItem("31");
-        
-        
+
         cbbulan.removeAllItems();
         cbbulan.addItem("Januari");
         cbbulan.addItem("Februari");
@@ -81,7 +80,7 @@ public class signup extends javax.swing.JFrame {
         cbbulan.addItem("Oktober");
         cbbulan.addItem("November");
         cbbulan.addItem("Desember");
-        
+
         cbtahun.removeAllItems();
         cbtahun.addItem("1995");
         cbtahun.addItem("1996");
@@ -303,27 +302,28 @@ public class signup extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneActionPerformed
-        String tgl = cbtanggal.getSelectedItem() + "/" + cbbulan.getSelectedItem() + "/" + cbtahun.getSelectedItem();
-        String sql = "insert into user (nrp, nama, JK, telp, alamat, password, ttl, tanggallahir) values (?,?,?,?,?,?,?,?)";
-        try{
-            data.clear();
-            data.add(txtnrp.getText());
-            data.add(txtnama.getText());
-            data.add(comboJK.getSelectedItem().toString());
-            data.add(txttelp.getText());
-            data.add(txtalamat.getText());
-            data.add(txtpassword.getText());
-            data.add(txtttl.getText());
-            data.add(tgl);
-            
-            
-            PreparedStatement stat = conn.prepareStatement(sql);
-            
-            for(int i=0; i<data.size(); i++)
-            {
-                stat.setString((i+1), data.get(i));
-            }
-            
+        if (txtnrp.getText().equals("") || txtnama.getText().equals("") || txttelp.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Isi data anda dengan benar");
+        } else {
+            String tgl = cbtanggal.getSelectedItem() + "/" + cbbulan.getSelectedItem() + "/" + cbtahun.getSelectedItem();
+            String sql = "insert into user (nrp, nama, JK, telp, alamat, password, ttl, tanggallahir) values (?,?,?,?,?,?,?,?)";
+            try {
+                data.clear();
+                data.add(txtnrp.getText());
+                data.add(txtnama.getText());
+                data.add(comboJK.getSelectedItem().toString());
+                data.add(txttelp.getText());
+                data.add(txtalamat.getText());
+                data.add(txtpassword.getText());
+                data.add(txtttl.getText());
+                data.add(tgl);
+
+                PreparedStatement stat = conn.prepareStatement(sql);
+
+                for (int i = 0; i < data.size(); i++) {
+                    stat.setString((i + 1), data.get(i));
+                }
+
 //            stat.setString(1, txtnrp.getText());
 //            stat.setString(2, txtnama.getText());
 //            stat.setString(3, comboJK.getSelectedItem().toString());
@@ -331,23 +331,23 @@ public class signup extends javax.swing.JFrame {
 //            stat.setString(5, txtalamat.getText());
 //            stat.setString(6, txtpassword.getText());
 //            stat.setString(7, txtttl.getText());
-           
-            
-            stat.executeUpdate();
-            JOptionPane.showMessageDialog(null, "DATA BERHASIL DISIMPAN");
-            
-            txtnrp.requestFocus();
-            new login().setVisible(true); // memindahkan dari signup form ke login form
-            this.setVisible(false); // menutup halaman signup
-        }catch(SQLException e){
-            JOptionPane.showMessageDialog(null, "DATA GAGAL DISIMPAN"+e);
+                stat.executeUpdate();
+                JOptionPane.showMessageDialog(null, "DATA BERHASIL DISIMPAN");
+
+                txtnrp.requestFocus();
+                new login().setVisible(true); // memindahkan dari signup form ke login form
+                this.setVisible(false); // menutup halaman signup
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "DATA GAGAL DISIMPAN" + e);
+            }
         }
+
     }//GEN-LAST:event_doneActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
-       new login().setVisible(true);
-       this.setVisible(false);    
-            
+        new login().setVisible(true);
+        this.setVisible(false);
+
     }//GEN-LAST:event_exitActionPerformed
 
     private void txttelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttelpActionPerformed
