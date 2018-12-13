@@ -38,7 +38,14 @@ public class menabung extends javax.swing.JFrame {
             ResultSet hasil = stmt.executeQuery(query);
             if(hasil.next())
             {
-                txtsaldoanda2.setText(hasil.getString("saldo"));
+//                jika dia tidak pernah nabung sama sekali maka label akan ditampilkan 0 
+                if (hasil.getInt("saldo") == 0) {
+                    txtsaldoanda2.setText(hasil.getString("0"));
+                }
+                else
+                {
+                    txtsaldoanda2.setText(hasil.getString("saldo"));
+                }
             }
         } catch (Exception e) {
         }
@@ -169,32 +176,38 @@ public class menabung extends javax.swing.JFrame {
 
     private void btnYaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYaActionPerformed
         // TODO add your handling code here:
-        String query = "INSERT INTO tabungan VALUES(?,?,?,?)";
+        int tabung = Integer.parseInt(txtisi.getText());
+        if (tabung < 0) {
+            JOptionPane.showMessageDialog(null, "MAAF SALDO YANG ANDA MASUKKAN TIDAK WAJAR");
+        } else {
         
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyy HH:mm:ss");
-        Date date = new Date();
-        
-        try { 
-            data.clear();
-            String nrp = login.txtnrp.getText();
-            data.add(nrp);
-            data.add(txtisi.getText());
-            data.add("0");
-            data.add(date.toString());
-            
-            PreparedStatement stmt = conn.prepareStatement(query);
-            for (int i = 0; i < data.size(); i++) {
-                stmt.setString((i+1), data.get(i));
+            String query = "INSERT INTO tabungan VALUES(?,?,?,?)";
+
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyy HH:mm:ss");
+            Date date = new Date();
+
+            try { 
+                data.clear();
+                String nrp = login.txtnrp.getText();
+                data.add(nrp);
+                data.add(txtisi.getText());
+                data.add("0");
+                data.add(date.toString());
+
+                PreparedStatement stmt = conn.prepareStatement(query);
+                for (int i = 0; i < data.size(); i++) {
+                    stmt.setString((i+1), data.get(i));
+                }
+
+
+                stmt.executeUpdate();
+
+    //            JOptionPane.showMessageDialog(null, "Berhasil Menabung");
+                getSaldo();
+                txtisi.setText("");
+            } catch (Exception e) {
+                System.out.println("Error : " + e);
             }
-            
-           
-            stmt.executeUpdate();
-            
-//            JOptionPane.showMessageDialog(null, "Berhasil Menabung");
-            getSaldo();
-            txtisi.setText("");
-        } catch (Exception e) {
-            System.out.println("Error : " + e);
         }
     }//GEN-LAST:event_btnYaActionPerformed
 
